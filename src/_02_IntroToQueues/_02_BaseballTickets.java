@@ -31,11 +31,23 @@ import java.util.ArrayDeque;
  * Complete the calculateWaitTime() method here!
  * Instructions are in the BaseBallTicketsTest class.
  */
-
 public class _02_BaseballTickets {
 
-    public static int calculateWaitTime( ArrayDeque<Integer> ticketsQueue, int position ) {
-        
-        return -1;
-    }
+	public static int calculateWaitTime(ArrayDeque<Integer> ticketsQueue, int position) {
+		int time = 0;
+		while (!ticketsQueue.isEmpty()) {
+			if (ticketsQueue.getFirst() == 1) {
+				ticketsQueue.removeFirst();
+				time += 1;
+			} else {
+				int first = ticketsQueue.removeFirst();
+				first -= 1;
+				ticketsQueue.add(first);
+				time += 1;
+				System.out.println(ticketsQueue);
+				System.out.println(time);
+			}
+		}
+		return time;
+	}
 }

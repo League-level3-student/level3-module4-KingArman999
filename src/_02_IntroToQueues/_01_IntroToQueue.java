@@ -3,6 +3,7 @@ package _02_IntroToQueues;
  * OBJECTIVE:
  * 1. Push 100 double values onto a Stack.
  * 2. Pop off as many values from the Stack to fill a Queue with 5 values.
+ * 
  * 3. Randomly remove between 1 and 5 values from the Queue and print them to
  *    the console.
  * 4. Repeat steps 2 and 3 until there are no values left in either the Stack
@@ -30,26 +31,55 @@ package _02_IntroToQueues;
  * Repeat until there are no more elements in the stack and queue
  */
 
+import java.util.ArrayDeque;
+import java.util.Random;
+import java.util.Stack;
+
 public class _01_IntroToQueue {
-    // 1. Create a Stack of Doubles using the Stack class
-    //    Note: you have to use the capitalized Double and not double
-    
-    // 2. Use a loop to add 100 random doubles between 0 and 100 to the Stack
-    
-    // 3. Create a Queue of Doubles using the ArrayDeque class
-    //    Note: you have to use the capitalized Double and not double
+	public static void main(String[] args) {
+		// 1. Create a Stack of Doubles using the Stack class
+		// Note: you have to use the capitalized Double and not double
+		ArrayDeque<Double> queue = new ArrayDeque<Double>();
+		Stack<Double> doubles = new Stack<Double>();
+		// 2. Use a loop to add 100 random doubles between 0 and 100 to the Stack
+		Random rand = new Random();
+		while (doubles.size() != 100) {
+			double drand = rand.nextDouble();
+			drand *= 100;
+			doubles.push(drand);
+		}
+		
+			// 3. Create a Queue of Doubles using the ArrayDeque class
+			// Note: you have to use the capitalized Double and not double
+			// 4. Pop off 5 elements from the Stack and add them to the Queue
+			for (int i = 0; i < 5; i++) {
+				queue.add(doubles.pop());
+			}
+			while (!doubles.isEmpty() && !queue.isEmpty()) {
+			// 5. Print and remove a random number of elements, from 1 to 5 elements,
+			// from the front of the Queue. Example:
+			// "removing 3 elements from Queue: 25 57 2"
+			Random fiverand = new Random();
+			int randomfive = fiverand.nextInt(5);
+			for (int i = 0; i < randomfive; i++) {
+				System.out.println(randomfive);
+				System.out.println(queue.pop());
+			}
+			// 6. Pop off as many elements from the stack to fill the Queue with 5
+			// elements. If there aren't enough elements in the Stack to fill the
+			// queue, fill the queue as much as possible.
+			for (int i = 0; i < randomfive; i++) {
+				if (queue.size() < 5) {
+					if (!doubles.isEmpty()) {
+						queue.add(doubles.pop());
+					} else
+						break;
+				} else
+					break;
+			}
+		}
 
-    // 4. Pop off 5 elements from the Stack and add them to the Queue 
-
-    // 5. Print and remove a random number of elements, from 1 to 5 elements,
-    //    from the front of the Queue. Example:
-    //    "removing 3 elements from Queue: 25 57 2"
-    
-    // 6. Pop off as many elements from the stack to fill the Queue with 5
-    //    elements. If there aren't enough elements in the Stack to fill the 
-    //    queue, fill the queue as much as possible. 
-    
-    // 7. Loop until there are no more elements in either the Stack or Queue
-    //    and all the elements are printed
-    
+		// 7. Loop until there are no more elements in either the Stack or Queue
+		// and all the elements are printed
+	}
 }
