@@ -27,18 +27,21 @@ public class MazeMaker {
         // 2. select a random cell in the maze to start 
         
         // 3. call the selectNextPath method with the randomly selected cell
-
+        
         return maze;
     }
 
     // 4. Complete the selectNextPathMethod
     private static void selectNextPath(Cell currentCell) {
         // A. SET currentCell as visited
-
+    	currentCell.setBeenVisited(true);
         // B. check for unvisited neighbors using the cell
-
+    	getUnvisitedNeighbors(currentCell);
         // C. if has unvisited neighbors,
-
+    	if (!getUnvisitedNeighbors(currentCell).isEmpty()) {
+    		
+		uncheckedCells.push();
+		}
         // C1. select one at random.
 
         // C2. push it to the stack
